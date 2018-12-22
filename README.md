@@ -53,6 +53,7 @@ Models can be configured by setting a number of attributes at their definition. 
     name = fields.Char(string="Title", required=True)
     description = fields.Text()
     start_date = fields.Date()
+    start_datetime = fields.Datetime('Start time', default=lambda self: fields.Datetime.now())
     duration = fields.Float(digits=(6, 2), help="Duration in days")
     seats = fields.Integer(string="Number of seats")
     
