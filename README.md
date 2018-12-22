@@ -40,7 +40,10 @@ my_module
 
 ## Manifest
 
+__manifest__.py, the manifest of your module, including for instance its title, description and data files to load
+
 ## Models
+models/models.py, an example of model with its fields.
 
 Business objects are declared as Python classes extending Model which integrates them into the automated persistence system.
 
@@ -65,6 +68,8 @@ Models can be configured by setting a number of attributes at their definition. 
 
 ## Views
 
+views/views.xml, a tree and a form view, with the menus opening them.
+
 Actions and menus are regular records in database, usually declared through data files. Actions can be triggered in three ways:
 
 - by clicking on menu items (linked to specific actions)
@@ -88,8 +93,10 @@ Adding in:
 
 ## Controllers
 
+controllers/controllers.py, an example of controller implementing some routes,
 
 ## Demos
+demo/demo.xml, demo records for the above example model
 
 Define demonstration data. The content of the data files is only loaded when a module is installed or updated.After making some changes, do not forget to use *odoo-bin -u openacademy* to save the changes to your database.
 
