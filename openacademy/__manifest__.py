@@ -28,10 +28,10 @@
         'views/templates.xml',
         'views/openacademy.xml',
         'views/partner.xml',
-,
+
     ],
     # Solo necesario para cargar datos de ejemplos
     'demo': [
-        'demo/demo.xml',
+        # 'demo/demo.xml',
     ],
 }
