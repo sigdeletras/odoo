@@ -1,13 +1,5 @@
 # Odoo resources
 
-## Legend
-
-1. 😍 _MUST_ Read (📄) / Watch (🎥) / Listen (🎼)
-1. 📚 Study!
-1. 📕 Book
-1. 💡 Project
-1. 🎥 Video
-1. 📄 Article
 
 ## First steps
 
@@ -40,3 +32,7 @@
 
 - https://www.odoo.yenthevg.com
 - http://odoowikia.com/blog
+
+## Object-Relational Mapping
+
+- https://es.wikipedia.org/wiki/Mapeo_objeto-relacional
