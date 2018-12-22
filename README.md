@@ -17,6 +17,25 @@ Añadiendo folder al path de addons
 ./odoo-bin --addons-path=enterprise/,../custom-addons/,../odoo/addons/
 ```
 
+```
+my_module
+├── __init__.py
+├── __manifest__.py
+├── controllers
+│   ├── __init__.py
+│   └── controllers.py
+├── demo
+│   └── demo.xml
+├── models
+│   ├── __init__.py
+│   └── models.py
+├── security
+│   └── ir.model.access.csv
+└── views
+    ├── templates.xml
+    └── views.xml
+```
+
 ## __init__
 
 ## Manifest
@@ -35,12 +54,14 @@ Models can be configured by setting a number of attributes at their definition. 
     seats = fields.Integer(string="Number of seats")
     
     # Relational fields
-    responsible_id = fields.Many2one('res.users',
-        ondelete='set null', string="Responsible", index=True)
+    responsible_id = fields.Many2one('res.users', ondelete='set null', string="Responsible", index=True)
     instructor_id = fields.Many2one('res.partner', string="Instructor")
-    course_id = fields.Many2one('openacademy.course',
-        ondelete='cascade', string="Course", required=True)
+    course_id = fields.Many2one('openacademy.course', ondelete='cascade', string="Course", required=True)
+    session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
 ```
+
+### Model inheritance
+
 
 ## Views
 
@@ -50,7 +71,6 @@ Actions and menus are regular records in database, usually declared through data
 - by clicking on buttons in views (if these are connected to actions)
 - as contextual actions on object
 
-Define new menu entries:
 
 ### Basics views
 
@@ -59,9 +79,12 @@ Define new menu entries:
 - Form views <form>. Forms are used to create and edit single records. 
 - Search views <search>. Search views customize the search field associated with the list view (and other aggregated views).
 
+Adding in:
+
 - __manifest__.py
 - views/openacademy.xml
 
+### View inheritance
 
 ## Controllers
 
@@ -71,5 +94,9 @@ Define new menu entries:
 Define demonstration data. The content of the data files is only loaded when a module is installed or updated.After making some changes, do not forget to use *odoo-bin -u openacademy* to save the changes to your database.
 
 ## Security
+
+
+
+
 
 
