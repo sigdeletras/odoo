@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <!-- No es necesario. Son datos que se cargan al principio -->
+        <!-- Comentar en _manifest__.py -->
+
+        <record model="openacademy.course" id="course0">
+            <field name="name">Curso 1</field>
+            <field name="description">Curso sobre Pyhton
+
+            Puede tener varias líenas
+            </field>
+        </record>
+        <record model="openacademy.course" id="course1">
+            <field name="name">Curso 2</field>
+            <!-- Sin descripción -->
+        </record>
+        <record model="openacademy.course" id="course2">
+            <field name="name">Curso 3</field>
+            <field name="description">Curso PostGIS</field>
+        </record>
+
+    
+    </data>
+</odoo>
