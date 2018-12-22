@@ -27,6 +27,14 @@ Business objects are declared as Python classes extending Model which integrates
 
 Models can be configured by setting a number of attributes at their definition. The most important attribute is _name which is required and defines the name for the model in the Odoo system.
 
+```python
+    name = fields.Char(string="Title", required=True)
+    description = fields.Text()
+    start_date = fields.Date()
+    duration = fields.Float(digits=(6, 2), help="Duration in days")
+    seats = fields.Integer(string="Number of seats")
+```
+
 ## Views
 
 Actions and menus are regular records in database, usually declared through data files. Actions can be triggered in three ways:
@@ -40,9 +48,9 @@ Define new menu entries:
 ### Basics views
 
 - Generic view declaration
-- Tree views
-- Form views
-- Search views
+- Tree views <tree>. List views, display records in a tabular form.
+- Form views <form>. Forms are used to create and edit single records. 
+- Search views <search>. Search views customize the search field associated with the list view (and other aggregated views).
 
 - __manifest__.py
 - views/openacademy.xml
