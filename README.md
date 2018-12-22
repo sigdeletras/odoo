@@ -5,7 +5,7 @@ Testing Odoo
 Creación de app
 
 ```
-oddo scatfold
+odoo-bin scaffold openacademy addons
 ```
 
 Añadiendo folder al path de addons
@@ -16,6 +16,8 @@ Añadiendo folder al path de addons
 ```
 ./odoo-bin --addons-path=enterprise/,../custom-addons/,../odoo/addons/
 ```
+
+## __init__
 
 ## Manifest
 
