@@ -15,6 +15,7 @@
 ## App
 
 - 📕 https://fundamentos-de-desarrollo-en-odoo.readthedocs.io/es/latest/capitulos/construyendo-tu-primera-aplicacion-odoo.html
+- Odoo.sh Your first module  https://www.odoo.com/documentation/user/11.0/odoo_sh/getting_started/first_module.html
 
 ## Modules
 
