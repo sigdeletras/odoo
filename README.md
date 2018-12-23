@@ -7,6 +7,24 @@ Tutorial https://www.odoo.com/documentation/11.0/howtos/backend.html
 - Python
 - XML Tools
 
+## Resources
+
+**Deploy**
+
+- 📄 How to deploy Odoo 11 on Ubuntu 18.04 https://linuxize.com/post/how-to-deploy-odoo-11-on-ubuntu-18-04/
+- 📄 Instalar Odoo 11 Ubuntu Server 18.04 LTShttps://odooerpcloud.com/instalar-odoo-11-ubuntu-server-18-04-lts
+- 📄 Install an Odoo 11 Stack on Ubuntu 16.04 https://www.linode.com/docs/websites/cms/install-an-odoo-11-stack-on-ubuntu-16-04/#before-you-begin
+- 📄 Install Odoo version 11 in Docker containerhttps://unkkuri.com/blog/unkkuri-blog-1/post/install-odoo-version-11-in-docker-container-21
+
+**Modelule**
+- 🎥 How To Install Custom Module In Odoo  https://www.youtube.com/watch?v=-sTtSG6m2z4
+- 🎥 Tutorial - Develop an App with the Odoo Framework - Odoo Experience 2017 https://www.youtube.com/watch?v=Q2mQTXghc4o
+- 📄 How to Create a Module in Odoo https://www.cybrosys.com/blog/how-create-module-odoo https://www.cybrosys.com/blog/how-to-create-module-in-odoo12
+- 📄 A step by step guide to creating Odoo Addon Modules https://www.google.com/amp/s/hub.packtpub.com/step-by-step-guide-to-creating-odoo-addon-modules/amp/
+- 📄 How to install new module in Odoo 11  https://www.odoo.com/es_ES/forum/ayuda-1/question/how-to-install-new-module-in-odoo-11-129844
+- 📄  Odoo.sh Your first module  https://www.odoo.com/documentation/user/11.0/odoo_sh/getting_started/first_module.html
+
+
 ## Scaffolding
 
 ```bash
@@ -351,6 +369,12 @@ demo/demo.xml, demo records for the above example model
 Define demonstration data. The content of the data files is only loaded when a module is installed or updated.After making some changes, do not forget to use *odoo-bin -u openacademy* to save the changes to your database.
 
 ## Security
+
+## Links
+
+- 📕 Odoo Development Essentials Book https://fundamentos-de-desarrollo-en-odoo.readthedocs.io/es/latest/capitulos/comenzando-con-odoo.html
+- https://www.odoo.yenthevg.com
+- http://odoowikia.com/blog
 
 
 
