@@ -1,5 +1,7 @@
 # Odoo Basic
 
+Tutorial https://www.odoo.com/documentation/11.0/howtos/backend.html
+
 ## VCode plugins
 
 - Python
