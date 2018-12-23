@@ -24,12 +24,12 @@ class Course(models.Model):
 
     # SQL contrsints
     #     CHECK that the course description and the course title are different
-    
+
     _sql_constraints = [
         ('name_description_check',
          'CHECK(name != description)',
          "The title of the course should not be the description"),
-    # Make the Course’s name UNIQUE
+        # Make the Course’s name UNIQUE
         ('name_unique',
          'UNIQUE(name)',
          "The course title must be unique"),
@@ -66,8 +66,13 @@ class Session(models.Model):
 
     # Calendar
     end_date = fields.Date(string="End Date", store=True,
-        compute='_get_end_date', inverse='_set_end_date')
+                           compute='_get_end_date', inverse='_set_end_date')
 
+    # hours = fields.Float(string="Duration in hours",
+    #                      compute='_get_hours', inverse='_set_hours')
+
+    attendees_count = fields.Integer(
+        string="Attendees count", compute='_get_attendees_count', store=True)
 
     @api.depends('seats', 'attendee_ids')
     def _taken_seats(self):
@@ -123,7 +128,13 @@ class Session(models.Model):
             end_date = fields.Datetime.from_string(r.end_date)
             r.duration = (end_date - start_date).days + 1
 
-    
+    # Graph
+
+    @api.depends('attendee_ids')
+    def _get_attendees_count(self):
+        for r in self:
+            r.attendees_count = len(r.attendee_ids)
+
     # Model constraints
     # Add Python constraints
     # # Add a constraint that checks that the instructor is not present in the attendees of his/her own session
