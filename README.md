@@ -66,6 +66,22 @@ __manifest__.py
 
 The manifest ofthe module, including for instance its title, description and data files to load.
 
+```xml
+{ 
+    'name': "Title", 
+    'summary': "Short subtitle phrase", 
+    'description': """Long description""", 
+    'author': "Your name", 
+    'license': "AGPL-3", 
+    'website': "http://www.example.com", 
+    'category': 'Uncategorized', 
+    'version': '11.0.1.0.0', 
+    'depends': ['base'], 
+    'data': ['views.xml'], 
+    'demo': ['demo.xml'], 
+}
+```
+
 ![Module](/img/01_module_manifest.png)
 
 ![Module](/img/01_module_technical_data.png)
