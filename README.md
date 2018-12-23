@@ -1,25 +1,23 @@
-# odoo_app
+# Odoo Basic
 
-Testing Odoo
-
-## VCode
+## VCode plugins
 
 - Python
 - XML Tools
 
-## Scaffold
+## Scaffolding
 
-```
-odoo-bin scaffold openacademy addons
+```bash
+$ odoo-bin scaffold openacademy addons
 ```
 
-Añadiendo folder al path de addons
+Add custon addons path
 
 - Go to location: /etc/odoo/odoo-server.conf
 - Add path in that file: addons_path = /opt/odoo/enterprise,/opt/odoo/addons,/opt/odoo/custom-addons
 
-```
-./odoo-bin --addons-path=enterprise/,../custom-addons/,../odoo/addons/
+```bash
+$ ./odoo-bin --addons-path=enterprise/,../custom-addons/,../odoo/addons/
 ```
 
 ```
@@ -41,17 +39,19 @@ my_module
     └── views.xml
 ```
 
-## __init__
-
 ## Manifest
 
 __manifest__.py, the manifest of your module, including for instance its title, description and data files to load
 
+![Module](/img/01_module_manifest.png)
+
+![Module](/img/01_module_technical_data.png)
+
+![Module](/img/01_module_installed_features.png)
+
 ## Models
-models/models.py, an example of model with its fields.
 
-Business objects are declared as Python classes extending Model which integrates them into the automated persistence system.
-
+models/models.py. Business objects are declared as Python classes extending Model which integrates them into the automated persistence system. 
 Models can be configured by setting a number of attributes at their definition. The most important attribute is _name which is required and defines the name for the model in the Odoo system.
 
 ```python
@@ -77,8 +77,8 @@ Models can be configured by setting a number of attributes at their definition. 
 
 When a new fields are adding is necessary to restart Odoo and upgrading the module.
 
-```
-service odoo restart
+```bash
+$ service odoo restart
 ```
 
 ### Model inheritance
