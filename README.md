@@ -2,7 +2,12 @@
 
 Testing Odoo
 
-## Creación estructura del módulo
+## VCode
+
+- Python
+- XML Tools
+
+## Scaffold
 
 ```
 odoo-bin scaffold openacademy addons
