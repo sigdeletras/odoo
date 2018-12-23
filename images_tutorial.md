@@ -61,11 +61,19 @@ __manifest__.py
 
 ![Module](/img/05_search.png)
 
-
 ![Module](/img/05_search_personalizado.png)
 
 ## Calendar
 
+![Module](/img/06_calendar.png)
 
 ## Graph
+
+![Module](/img/07_graph.png)
+
+## Report
+
+![Module](/img/08_report.png)
+
+![Module](/img/08_report02.png)
 
