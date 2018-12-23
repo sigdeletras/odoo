@@ -87,6 +87,77 @@ When a new fields are adding is necessary to restart Odoo and upgrading the modu
 $ service odoo restart
 ```
 
+### Computed fields
+
+```python
+    taken_seats = fields.Float(string="Taken seats", compute='_taken_seats')
+
+    @api.depends('seats', 'attendee_ids')
+    def _taken_seats(self):
+        for r in self:
+            if not r.seats:
+                r.taken_seats = 0.0
+            else:
+                r.taken_seats = 100.0 * len(r.attendee_ids) / r.seats
+```
+
+### Inheritance
+
+```python
+# -*- coding: utf-8 -*-
+from odoo import fields, models
+
+class Partner(models.Model):
+    _inherit = 'res.partner'
+
+    # Add a new column to the res.partner model, by default partners are not
+    # instructors
+    instructor = fields.Boolean("Instructor", default=False)
+
+    session_ids = fields.Many2many('openacademy.session',
+        string="Attended Sessions", readonly=True)
+```
+
+### Onchange
+
+The “onchange” mechanism provides a way for the client interface to update a form whenever the user has filled in a value in a field, without saving anything to the database.
+
+```python
+    @api.onchange('seats', 'attendee_ids')
+    def _verify_valid_seats(self):
+        if self.seats < 0:
+            return {
+                'warning': {
+                    'title': "Incorrect 'seats' value",
+                    'message': "The number of available seats may not be negative",
+                },
+            }
+        if self.seats < len(self.attendee_ids):
+            return {
+                'warning': {
+                    'title': "Too many attendees",
+                    'message': "Increase seats or remove excess attendees",
+                },
+            }
+```
+
+### Constrains
+
+- Python constraints
+- SQL constraints
+
+```python
+
+from odoo import models, fields, api, exceptions
+
+....
+
+    @api.constrains('instructor_id', 'attendee_ids')
+    def _check_instructor_not_in_attendees(self):
+        for r in self:
+            if r.instructor_id and r.instructor_id in r.attendee_ids:
+                raise exceptions.ValidationError("A session's instructor can't be an attendee")
+```
 ## Views
 
 views/views.xml
