@@ -16,7 +16,8 @@ Tutorial https://www.odoo.com/documentation/11.0/howtos/backend.html
 - 📄 Install an Odoo 11 Stack on Ubuntu 16.04 https://www.linode.com/docs/websites/cms/install-an-odoo-11-stack-on-ubuntu-16-04/#before-you-begin
 - 📄 Install Odoo version 11 in Docker containerhttps://unkkuri.com/blog/unkkuri-blog-1/post/install-odoo-version-11-in-docker-container-21
 
-**Modelule**
+**Module**
+
 - 🎥 How To Install Custom Module In Odoo  https://www.youtube.com/watch?v=-sTtSG6m2z4
 - 🎥 Tutorial - Develop an App with the Odoo Framework - Odoo Experience 2017 https://www.youtube.com/watch?v=Q2mQTXghc4o
 - 📄 How to Create a Module in Odoo https://www.cybrosys.com/blog/how-create-module-odoo https://www.cybrosys.com/blog/how-to-create-module-in-odoo12
