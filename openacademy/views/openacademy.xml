@@ -107,6 +107,8 @@
                             <field name="start_date"/>
                             <field name="duration"/>
                             <field name="seats"/>
+                            <!-- Computed fields -->
+                            <field name="taken_seats" widget="progressbar"/>
                         </group>
                     </group>
                     <label for="attendee_ids"/>
@@ -125,6 +127,9 @@
             <tree string="Session Tree">
                 <field name="name"/>
                 <field name="course_id"/>
+                <!-- Computed fields -->
+                <field name="taken_seats" widget="progressbar"/>
+
             </tree>
         </field>
     </record>

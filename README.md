@@ -69,6 +69,12 @@ Models can be configured by setting a number of attributes at their definition. 
     session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
 ```
 
+When a new fields are adding is necessary to restart Odoo and upgrading the module.
+
+```
+service odoo restart
+```
+
 ### Model inheritance
 
 
