@@ -131,6 +131,7 @@
             <tree string="Session Tree" decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
                 <field name="name"/>
                 <field name="course_id"/>
+                <field name="duration" invisible="1"/>
                 <!-- Computed fields -->
                 <field name="taken_seats" widget="progressbar"/>
 
@@ -149,14 +150,11 @@
         </field>
     </record>
 
-
-    <!--  Acciones de Sesión -->
     <record model="ir.actions.act_window" id="session_list_action">
         <field name="name">Sessions</field>
         <field name="res_model">openacademy.session</field>
         <field name="view_type">form</field>
-        <field name="view_mode">tree,form,calendar</field> <!-- Calendar-->
-
+        <field name="view_mode">tree,form,calendar</field>
     </record>
 
     <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" action="session_list_action"/>
