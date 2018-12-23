@@ -1,6 +1,5 @@
 # Odoo Basic
 
-
 ## VCode plugins
 
 - Python
@@ -167,7 +166,36 @@ Adding in __manifest__.py
 
 ## Form views
 
-![Module](/img/04_form01.png)
+```xml
+    <!-- Sesión Formulario -->
+    <record model="ir.ui.view" id="session_form_view">
+        <field name="name">session.form</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <form string="Session Form">
+                <sheet>
+                    <group>
+                        <group string="General">
+                            <field name="course_id"/>
+                            <field name="name"/>
+                            <field name="instructor_id"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="Schedule">
+                            <field name="start_date"/>
+                            <field name="duration"/>
+                            <field name="seats"/>
+                            <!-- Computed fields -->
+                            <field name="taken_seats" widget="progressbar"/>
+                        </group>
+                    </group>
+                    <label for="attendee_ids"/>
+                    <field name="attendee_ids"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+```
 
 ![Module](/img/04_form02.png)
 
