@@ -55,13 +55,19 @@ Business objects are declared as Python classes extending Model which integrates
 Models can be configured by setting a number of attributes at their definition. The most important attribute is _name which is required and defines the name for the model in the Odoo system.
 
 ```python
+    # Strings
     name = fields.Char(string="Title", required=True)
     description = fields.Text()
+
+    # Date
     start_date = fields.Date()
     start_datetime = fields.Datetime('Start time', default=lambda self: fields.Datetime.now())
+    
+    # Numbers
     duration = fields.Float(digits=(6, 2), help="Duration in days")
     seats = fields.Integer(string="Number of seats")
-    
+    active = fields.Boolean(default=True) # Boolena
+
     # Relational fields
     responsible_id = fields.Many2one('res.users', ondelete='set null', string="Responsible", index=True)
     instructor_id = fields.Many2one('res.partner', string="Instructor")
