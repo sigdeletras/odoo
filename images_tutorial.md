@@ -2,19 +2,15 @@
 
 ![Module](/img/01_module.png)
 
-__manifest__.py
+## __manifest__.py
 
 ![Module](/img/01_module_manifest.png)
 
 ![Module](/img/01_module_technical_data.png)
 
-01_module_installed_features.png
-
-
+![Module](/img/01_module_installed_features.png)
 
 ## Model fields
-
-
 
 
 ## Actions and Menus
