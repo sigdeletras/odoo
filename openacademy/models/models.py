@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+# import exceptions to use in Python constraints
+from odoo import models, fields, api, exceptions
+
 
 # Modelos (tablas y atributos)
 
@@ -8,27 +10,39 @@ from odoo import models, fields, api
 class Course(models.Model):
     _name = 'openacademy.course'
 
-    name = fields.Char(string="Título", required=True)
+    name = fields.Char(string="Title", required=True)
     description = fields.Text()
 
     # Relaciones entre tablas
     responsible_id = fields.Many2one('res.users',
-                                     ondelete='set null', string="Responsible", index=True)
+                                     ondelete='set null', string="Responsable", index=True)
     session_ids = fields.One2many(
         'openacademy.session', 'course_id', string="Sessions")
+
+    # SQL contrsints
+    #     CHECK that the course description and the course title are different
+    
+    _sql_constraints = [
+        ('name_description_check',
+         'CHECK(name != description)',
+         "The title of the course should not be the description"),
+    # Make the Course’s name UNIQUE
+        ('name_unique',
+         'UNIQUE(name)',
+         "The course title must be unique"),
+    ]
 
 
 class Session(models.Model):
     _name = 'openacademy.session'
 
     name = fields.Char(required=True)
-    start_date = fields.Date(default=fields.Date.today) # Default
+    start_date = fields.Date(default=fields.Date.today)  # Default
 
     duration = fields.Float(digits=(6, 2), help="Duration in days")
     seats = fields.Integer(string="Number of seats")
 
     active = fields.Boolean(default=True)
-
 
     # complex domains. Modify the Session model’s domain
     instructor_id = fields.Many2one('res.partner', string="Instructor",
@@ -55,9 +69,9 @@ class Session(models.Model):
             else:
                 r.taken_seats = 100.0 * len(r.attendee_ids) / r.seats
 
-
-    # onchange. Add an explicit onchange to warn about invalid values, 
+    # onchange. Add an explicit onchange to warn about invalid values,
     # like a negative number of seats, or more participants than seats.
+
     @api.onchange('seats', 'attendee_ids')
     def _verify_valid_seats(self):
         if self.seats < 0:
@@ -74,6 +88,18 @@ class Session(models.Model):
                     'message': "Increase seats or remove excess attendees",
                 },
             }
+
+    # Model constraints
+    # Add Python constraints
+    # # Add a constraint that checks that the instructor is not present in the attendees of his/her own session
+
+    @api.constrains('instructor_id', 'attendee_ids')
+    def _check_instructor_not_in_attendees(self):
+        for r in self:
+            if r.instructor_id and r.instructor_id in r.attendee_ids:
+                raise exceptions.ValidationError(
+                    "A session's instructor can't be an attendee")
+
 
 class Partner(models.Model):
     _inherit = 'res.partner'
