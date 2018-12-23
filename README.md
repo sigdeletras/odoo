@@ -1,5 +1,6 @@
 # Odoo Basic
 
+
 ## VCode plugins
 
 - Python
@@ -41,7 +42,9 @@ my_module
 
 ## Manifest
 
-__manifest__.py, the manifest of your module, including for instance its title, description and data files to load
+__manifest__.py 
+
+The manifest ofthe module, including for instance its title, description and data files to load.
 
 ![Module](/img/01_module_manifest.png)
 
@@ -51,8 +54,10 @@ __manifest__.py, the manifest of your module, including for instance its title, 
 
 ## Models
 
-models/models.py. Business objects are declared as Python classes extending Model which integrates them into the automated persistence system. 
-Models can be configured by setting a number of attributes at their definition. The most important attribute is _name which is required and defines the name for the model in the Odoo system.
+models/models.py
+
+Business objects are declared as Python classes extending Model which integrates them into the automated persistence system. Models can be configured by setting a number of attributes at their definition.
+
 
 ```python
     # Strings
@@ -81,37 +86,132 @@ When a new fields are adding is necessary to restart Odoo and upgrading the modu
 $ service odoo restart
 ```
 
-### Model inheritance
-
-
 ## Views
 
-views/views.xml, a tree and a form view, with the menus opening them.
+views/views.xml
 
-Actions and menus are regular records in database, usually declared through data files. Actions can be triggered in three ways:
+Tree and a form views, with the menus opening them. Actions and menus are regular records in database, usually declared through data files. Actions can be triggered in three ways:
 
 - by clicking on menu items (linked to specific actions)
 - by clicking on buttons in views (if these are connected to actions)
 - as contextual actions on object
 
 
-### Basics views
+**Basics views*
 
-- Generic view declaration
 - Tree views <tree>. List views, display records in a tabular form.
 - Form views <form>. Forms are used to create and edit single records. 
 - Search views <search>. Search views customize the search field associated with the list view (and other aggregated views).
 
-Adding in:
+Adding in __manifest__.py
 
-- __manifest__.py
-- views/openacademy.xml
+```xml
+    # always loaded
+    'data': [
+        # 'security/ir.model.access.csv',
+        # 'views/views.xml',
+        'views/templates.xml',
+        'views/openacademy.xml',
+        'views/partner.xml',
+        'reports.xml',
 
-### View inheritance
+    ],
+```
+## Menus and actions 
+
+```xml
+<record model="ir.actions.act_window" id="course_list_action">
+        <field name="name">Cursos</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <!-- Personalización de Búsquedas -->
+        <field name="context" eval="{'search_default_my_courses': 1}"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Crea el primer curso
+            </p>
+        </field>
+    </record>
+
+    <!-- top level menu: no parent -->
+    <menuitem id="main_openacademy_menu" name="Open Academy"/>
+    <!-- A first level in the left side menu is needed before using action= attribute -->
+    <menuitem id="openacademy_menu" name="Open Academy" parent="main_openacademy_menu"/>
+    <!-- the following menuitem should appear *after* its parent openacademy_menu and *after* its
+             action course_list_action -->
+    <menuitem id="courses_menu" name="Courses" parent="openacademy_menu" action="course_list_action"/>
+    <!-- Full id location: action="openacademy.course_list_action"  It is not required when it is the same module -->
+
+```
+
+![Module](/img/02_menus.png)
+
+## Tree views
+
+```xml
+    <record model="ir.ui.view" id="course_tree_view">
+        <field name="name">course.tree</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <tree string="Course Tree">
+                <field name="name"/>
+                <field name="responsible_id"/>
+            </tree>
+        </field>
+    </record>
+```
+
+![Module](/img/03_tree.png)
+
+![Module](/img/03_tree2.png)
+
+## Form views
+
+![Module](/img/04_form01.png)
+
+![Module](/img/04_form02.png)
+
+## Search views
+```xml
+    <record model="ir.ui.view" id="course_search_view">
+        <field name="name">course.search</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <!-- Advanced search-->
+                <filter name="my_courses" string="My Courses" domain="[('responsible_id', '=', uid)]"/>
+                <group string="Group By">
+                    <filter name="by_responsible" string="Responsible" context="{'group_by': 'responsible_id'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+```
+
+![Module](/img/05_search.png)
+
+![Module](/img/05_search_personalizado.png)
+
+## Calendar
+
+![Module](/img/06_calendar.png)
+
+## Graph
+
+![Module](/img/07_graph.png)
+
+## Report
+
+![Module](/img/08_report.png)
+
+![Module](/img/08_report02.png)
 
 ## Controllers
 
-controllers/controllers.py, an example of controller implementing some routes,
+controllers/controllers.py
 
 ## Demos
 demo/demo.xml, demo records for the above example model
