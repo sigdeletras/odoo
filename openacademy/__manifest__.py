@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "openacademy",
+    'name': "Open Academy",
 
     'summary': """
-        Primer ejemplo sencilla""",
+        Ejemplo de módulo para gestión de curssos, asistentes""",
 
     'description': """
         Módulo de prueba
@@ -13,8 +13,6 @@
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/11.0/odoo/addons/base/module/module_data.xml
-    # for the full list
     'category': 'Uncategorized',
     'version': '0.1',
 
@@ -28,6 +26,7 @@
         'views/templates.xml',
         'views/openacademy.xml',
         'views/partner.xml',
+        'reports.xml',
 
     ],
     # Solo necesario para cargar datos de ejemplos
