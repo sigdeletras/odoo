@@ -26,7 +26,8 @@
         'views/templates.xml',
         'views/openacademy.xml',
         'views/partner.xml',
-        'reports.xml',
+        'reports/report_session.xml',
+        'reports/report_course.xml',
 
     ],
     # Solo necesario para cargar datos de ejemplos

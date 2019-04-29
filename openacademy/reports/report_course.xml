@@ -1,0 +1,57 @@
+<odoo>
+
+    <report
+        id="report_course_view"
+        model="openacademy.course"
+        string="Ficha de curso"
+        name="openacademy.report_course_template"
+        file="openacademy.report_course_template"
+        report_type="qweb-pdf" />
+
+        <report
+        id="report_course_list"
+        model="openacademy.course"
+        string="Listado de cursos"
+        name="openacademy.report_course_template_list"
+        file="openacademy.report_course_template_list"
+        report_type="qweb-pdf" />
+
+    <template id="report_course_template">
+        <t t-call="web.html_container">
+        
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="header">
+                        <p>Skal</p>
+                        </div>
+                        <div class="page">
+                            <h2 t-field="doc.name"/>
+                            
+                        </div>
+                        <div class="footer">
+                            <small><t t-esc="datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')"/></small>
+                        </div>
+                    </t>
+                </t>
+ 
+        </t>
+    </template>
+
+    <template id="report_course_template_list">
+        <t t-call="web.html_container">
+        
+                 <div class="page">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                            <p t-field="doc.name"/>
+                    </t>
+                </t>
+                 </div>
+
+        </t>
+    </template>
+
+   
+
+</odoo>
+
