@@ -347,6 +347,7 @@ Adding in __manifest__.py
 ## Report
 
 - https://github.com/OCA/reporting-engine
+- https://www.cybrosys.com/blog/basic-qweb-operations
 - https://www.cybrosys.com/blog/qweb-reports-in-odoo12
 - 
 
