@@ -346,6 +346,8 @@ Adding in __manifest__.py
 
 ## Report
 
+- https://github.com/OCA/reporting-engine
+
 ```xml
 <odoo>
 
